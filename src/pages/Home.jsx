@@ -13,7 +13,7 @@ import Testimonials from "../components/testimonials/Testimonials";
 import NewsLetter from "../components/news-letter/NewsLetter";
 import Footer from "../components/footer/Footer";
 
-import BackdropMenu from "../components/backdrop/BackDropMenu";
+import BackDropMenu from "../components/backdrop/BackDropMenu";
 import WebsiteCheckupModal from "../components/calltoaction/WebsiteCheckupModel";
 
 function Home() {
@@ -31,7 +31,7 @@ function Home() {
 
       
       {showDropdown && (
-        <BackdropMenu
+        <BackDropMenu
           onClose={() => setShowDropdown(false)}
           onDesignClick={() => {
             setShowDropdown(false);
