@@ -12,8 +12,9 @@ import darkLogo from "../../assets/dark-logo.png";
 import { useTheme } from "../../context/ThemeContext";
 import WebsiteCheckupModel from "../calltoaction/WebsiteCheckupModel";
 
-function Navbar({ onWhatWeDoClick }) {
+function Navbar({ onWhatWeDoClick,onWhoWeAreClick,onReviewsClick,onBlogClick, }) {
   const { darkMode, toggleTheme } = useTheme();
+  const [activeMenu, setActiveMenu] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -39,26 +40,72 @@ function Navbar({ onWhatWeDoClick }) {
               darkMode ? "text-white" : "text-[#161E2E]"
             }`}
           >
-            <li className="cursor-pointer hover:text-[#00B871] transition">
+            <li
+              onClick={() => {
+                setMenuOpen(false);
+                setActiveMenu("who");
+                onWhoWeAreClick?.();
+              }}
+              className={`cursor-pointer transition ${
+                activeMenu === "who"
+                  ? "text-[#00B871]"
+                  : darkMode
+                  ? "text-white"
+                  : "text-[#161E2E]"
+              } hover:text-[#00B871]`}
+            >
               Who we are
             </li>
 
             <li
               onClick={() => {
                 setMenuOpen(false);
+                setActiveMenu("what");
                 onWhatWeDoClick?.();
               }}
-              className="flex items-center gap-1 cursor-pointer hover:text-[#00B871] transition"
+              className={`flex items-center gap-1 cursor-pointer transition ${
+                activeMenu === "what"
+                  ? "text-[#00B871]"
+                  : darkMode
+                  ? "text-white"
+                  : "text-[#161E2E]"
+              } hover:text-[#00B871]`}
             >
               What we do
               <ChevronDown size={16} />
             </li>
 
-            <li className="cursor-pointer hover:text-[#00B871] transition">
+            <li
+              onClick={() => {
+                setMenuOpen(false);
+                setActiveMenu("reviews")
+                onReviewsClick?.();
+              }}
+              className={`cursor-pointer transition ${
+                activeMenu === "reviews"
+                  ? "text-[#00B871]"
+                  : darkMode
+                  ? "text-white"
+                  : "text-[#161E2E]"
+              } hover:text-[#00B871]`}
+            >
               Reviews
             </li>
 
-            <li className="cursor-pointer hover:text-[#00B871] transition">
+            <li
+              onClick={() => {
+                setMenuOpen(false);
+                setActiveMenu("blog")
+                onBlogClick?.();
+              }}
+              className={`cursor-pointer transition ${
+                activeMenu === "blog"
+                  ? "text-[#00B871]"
+                  : darkMode
+                  ? "text-white"
+                  : "text-[#161E2E]"
+              } hover:text-[#00B871]`}
+            >
               Blog
             </li>
           </ul>
@@ -111,7 +158,10 @@ function Navbar({ onWhatWeDoClick }) {
             }`}
           >
             <li
-              onClick={() => setMenuOpen(false)}
+              onClick={() => {
+                setMenuOpen(false);
+                onWhoWeAreClick?.();
+              }}
               className="cursor-pointer"
             >
               Who we are
@@ -129,14 +179,20 @@ function Navbar({ onWhatWeDoClick }) {
             </li>
 
             <li
-              onClick={() => setMenuOpen(false)}
+              onClick={() => {
+                setMenuOpen(false);
+                onReviewsClick?.();
+              }}
               className="cursor-pointer"
             >
               Reviews
             </li>
 
             <li
-              onClick={() => setMenuOpen(false)}
+              onClick={() => {
+                setMenuOpen(false);
+                onBlogClick?.();
+              }}
               className="cursor-pointer"
             >
               Blog

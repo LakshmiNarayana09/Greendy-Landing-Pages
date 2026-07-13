@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRef } from "react";
 
 import Navbar from "../components/navbar/Navbar";
 import Hero from "../components/hero/Hero";
@@ -20,16 +21,30 @@ function Home() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  const whoWeAreRef = useRef(null);
+  const reviewsRef = useRef(null);
+  const blogRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    ref.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div className="relative">
-      
+
       <Navbar
         onWhatWeDoClick={() => {
+          console.log("What we do clicked");
           setShowDropdown(true);
         }}
+        onWhoWeAreClick={() => scrollToSection(whoWeAreRef)}
+        onReviewsClick={() => scrollToSection(reviewsRef)}
+        onBlogClick={() => scrollToSection(blogRef)}
       />
-
-      
+    
       {showDropdown && (
         <BackDropMenu
           onClose={() => setShowDropdown(false)}
@@ -52,14 +67,32 @@ function Home() {
       )}
 
       
+
+      
+
       <Hero />
       <Brands />
-      <WhoWeAre />
+
+      <section
+        ref={whoWeAreRef}
+        className="scroll-mt-20"
+      >
+        <WhoWeAre />
+      </section>
+
       <WhyChooseUs />
-      <Statistics />
+
+      <section ref={reviewsRef}>
+        <Statistics />
+      </section>
+
       <WhatWeDo />
       <Strategy />
-      <Blog />
+
+      <section ref={blogRef}>
+        <Blog />
+      </section>
+
       <Testimonials />
       <NewsLetter />
       <Footer />

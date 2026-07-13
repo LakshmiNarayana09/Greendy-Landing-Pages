@@ -15,18 +15,18 @@ function BackdropMenu({ onClose, onDesignClick }) {
     <>
       
       <div
-        className="fixed inset-0 z-30"
+        className="fixed inset-0 z-[60]"
         onClick={onClose}
       />
 
       
       <div
         className="
-          absolute
+          fixed
           top-20
           left-1/2
           -translate-x-1/2
-          z-40
+          z-[70]
           w-full
           px-4
           sm:px-6
@@ -72,7 +72,6 @@ function BackdropMenu({ onClose, onDesignClick }) {
                   "
                 >
                   <div className="flex items-center gap-3 sm:gap-4">
-                    
                     <div
                       className="
                         w-8 h-8
@@ -85,34 +84,15 @@ function BackdropMenu({ onClose, onDesignClick }) {
                         rounded
                       "
                     >
-                      <Icon
-                        className="text-[#00B871] w-4 h-4 sm:w-[18px] sm:h-[18px]"
-                      />
+                      <Icon className="text-[#00B871] w-4 h-4 sm:w-[18px] sm:h-[18px]" />
                     </div>
 
-                    
                     <div>
-                      <h4
-                        className="
-                          text-[13px]
-                          sm:text-[14px]
-                          font-medium
-                          text-[#161E2E]
-                          group-hover:text-[#00B871]
-                          transition-colors
-                        "
-                      >
+                      <h4 className="text-[13px] sm:text-[14px] font-medium text-[#161E2E] group-hover:text-[#00B871]">
                         {item.title}
                       </h4>
 
-                      <p
-                        className="
-                          text-[11px]
-                          sm:text-[12px]
-                          text-[#161E2E]
-                          mt-1
-                        "
-                      >
+                      <p className="text-[11px] sm:text-[12px] text-[#161E2E] mt-1">
                         {item.subtitle}
                       </p>
                     </div>
