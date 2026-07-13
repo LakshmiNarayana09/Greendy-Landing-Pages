@@ -13,7 +13,7 @@ import Testimonials from "../components/testimonials/Testimonials";
 import NewsLetter from "../components/news-letter/NewsLetter";
 import Footer from "../components/footer/Footer";
 
-import BackDropMenu from "../components/backdrop/BackDropMenu";
+import BackDropMenu from "../components/backdrop/BackdropMenu";
 import WebsiteCheckupModal from "../components/calltoaction/WebsiteCheckupModel";
 
 function Home() {
