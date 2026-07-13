@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-import { ChevronDown, ArrowRight, Menu, X } from "lucide-react";
+import {
+  ChevronDown,
+  ArrowRight,
+  Menu,
+  X,
+  Sun,
+  Moon,
+} from "lucide-react";
 import lightLogo from "../../assets/light-logo.png";
 import darkLogo from "../../assets/dark-logo.png";
 import { useTheme } from "../../context/ThemeContext";
 
 function Navbar({ onWhatWeDoClick }) {
   const { darkMode, toggleTheme } = useTheme();
-
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -58,31 +64,18 @@ function Navbar({ onWhatWeDoClick }) {
         
         <div className="hidden lg:flex items-center gap-4">
           <button
-              onClick={toggleTheme}
-              className={`
-                h-12
-                w-full
-                rounded-lg
-                border
-                flex
-                items-center
-                justify-center
-                font-medium
-                transition-all
-                duration-300
-                hover:scale-[1.02]
-                active:scale-[0.98]
-                ${
-                  darkMode
-                    ? "bg-[#232D42] border-[#2FDF84] text-white hover:bg-[#2D3852]"
-                    : "bg-white border-[#D9E2EC] text-[#161E2E] hover:bg-[#F4FBF7] hover:border-[#00B871]"
-                }
-              `}
-            >
-              {darkMode ? "Light Mode" : "Dark Mode"}
-            </button>
+            onClick={toggleTheme}
+            className={`h-12 px-5 rounded-lg border flex items-center justify-center gap-2 font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${
+              darkMode
+                ? "bg-[#232D42] border-[#2FDF84] text-white hover:bg-[#2D3852]"
+                : "bg-white border-[#D9E2EC] text-[#161E2E] hover:bg-[#F4FBF7] hover:border-[#00B871]"
+            }`}
+          >
+            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            
+          </button>
 
-          <button className="h-12 px-8 bg-[#00B871] rounded flex items-center gap-4 text-[#F4FBF7] text-sm hover:bg-[#009e60] transition">
+          <button className="w-[340px] h-12 bg-[#00B871] rounded-lg flex justify-center items-center gap-3 text-white hover:bg-[#009e60] transition">
             Get your free website review
             <ArrowRight size={20} />
           </button>
@@ -147,30 +140,17 @@ function Navbar({ onWhatWeDoClick }) {
           <div className="flex flex-col gap-4 mt-8">
             <button
               onClick={toggleTheme}
-              className={`
-                h-12
-                w-full
-                rounded-lg
-                border
-                flex
-                items-center
-                justify-center
-                font-medium
-                transition-all
-                duration-300
-                hover:scale-[1.02]
-                active:scale-[0.98]
-                ${
-                  darkMode
-                    ? "bg-[#232D42] border-[#2FDF84] text-white hover:bg-[#2D3852]"
-                    : "bg-white border-[#D9E2EC] text-[#161E2E] hover:bg-[#F4FBF7] hover:border-[#00B871]"
-                }
-              `}
+              className={`h-12 w-full rounded-lg border flex items-center justify-center gap-2 font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${
+                darkMode
+                  ? "bg-[#232D42] border-[#2FDF84] text-white hover:bg-[#2D3852]"
+                  : "bg-white border-[#D9E2EC] text-[#161E2E] hover:bg-[#F4FBF7] hover:border-[#00B871]"
+              }`}
             >
-              {darkMode ? "Light Mode" : "Dark Mode"}
+              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+              
             </button>
 
-            <button className="h-12 bg-[#00B871] rounded flex justify-center items-center gap-3 text-white hover:bg-[#009e60] transition">
+            <button className="h-12 bg-[#00B871] rounded-lg flex justify-center items-center gap-3 text-white hover:bg-[#009e60] transition">
               Get your free website review
               <ArrowRight size={20} />
             </button>
