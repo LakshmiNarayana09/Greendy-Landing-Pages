@@ -10,10 +10,13 @@ import {
 import lightLogo from "../../assets/light-logo.png";
 import darkLogo from "../../assets/dark-logo.png";
 import { useTheme } from "../../context/ThemeContext";
+import WebsiteCheckupModel from "../calltoaction/WebsiteCheckupModel";
 
 function Navbar({ onWhatWeDoClick }) {
   const { darkMode, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   return (
     <header
@@ -75,7 +78,10 @@ function Navbar({ onWhatWeDoClick }) {
             
           </button>
 
-          <button className="w-[340px] h-12 bg-[#00B871] rounded-lg flex justify-center items-center gap-3 text-white hover:bg-[#009e60] transition">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="w-[340px] h-12 bg-[#00B871] rounded-lg flex justify-center items-center gap-3 text-white hover:bg-[#009e60] transition"
+          >
             Get your free website review
             <ArrowRight size={20} />
           </button>
@@ -150,13 +156,24 @@ function Navbar({ onWhatWeDoClick }) {
               
             </button>
 
-            <button className="h-12 bg-[#00B871] rounded-lg flex justify-center items-center gap-3 text-white hover:bg-[#009e60] transition">
+            <button
+              onClick={() => {
+                setMenuOpen(false);
+                setIsModalOpen(true);
+              }}
+              className="h-12 bg-[#00B871] rounded-lg flex justify-center items-center gap-3 text-white hover:bg-[#009e60] transition"
+            >
               Get your free website review
               <ArrowRight size={20} />
             </button>
           </div>
         </div>
       </div>
+      {isModalOpen && (
+        <WebsiteCheckupModel
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </header>
   );
 }
